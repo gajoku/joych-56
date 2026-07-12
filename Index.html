@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documnt</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+
+    <section>
+        <h1>
+            7/24(금) 저녁집회
+        </h1>
+        <div class="swiper">
+            <button class="fullscreen-btn" id="btn1">
+                <svg id="fs-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" />
+                </svg>
+            </button>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="/asset/금요일 저녁2.png" /></div>
+                <div class="swiper-slide"><img src="/asset/금요일 저녁3.png" /></div>
+                <div class="swiper-slide"><img src="/asset/금요일 저녁4.png" /></div>
+                <div class="swiper-slide"><img src="/asset/금요일 저녁5.png" /></div>
+                <div class="swiper-slide"><img src="/asset/금요일 저녁6.png" /></div>
+                <div class="swiper-slide"><img src="/asset/금요일 저녁7.png" /></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-scrollbar"></div>
+        </div>
+    </section>
+
+    <section>
+        <h1>
+            7/25(토) 저녁집회
+        </h1>
+        <div class="swiper" id="swiper1">
+            <button class="fullscreen-btn" id="btn1">
+                <svg id="fs-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" />
+                </svg>
+            </button>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="/asset/토요저녁-02.png" /></div>
+                <div class="swiper-slide"><img src="/asset/토요저녁-03.png" /></div>
+                <div class="swiper-slide"><img src="/asset/토요저녁-04.png" /></div>
+                <div class="swiper-slide"><img src="/asset/토요저녁-05.png" /></div>
+                <div class="swiper-slide"><img src="/asset/토요저녁-06.png" /></div>
+                <div class="swiper-slide"><img src="/asset/토요저녁-07.png" /></div>
+                <div class="swiper-slide"><img src="/asset/토요저녁-08.png" /></div>
+                <div class="swiper-slide"><img src="/asset/토요저녁-09.png" /></div>
+                <div class="swiper-slide"><img src="/asset/토요저녁-10.png" /></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-scrollbar"></div>
+        </div>
+    </section>
+
+    <section>
+        <h1>
+            7/26(일) 닫는예배
+        </h1>
+        <div class="swiper" id="swiper1">
+            <button class="fullscreen-btn" id="btn1">
+                <svg id="fs-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" />
+                </svg>
+            </button>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="/asset/일요오전-2.png" /></div>
+                <div class="swiper-slide"><img src="/asset/일요오전-3.png" /></div>
+                <div class="swiper-slide"><img src="/asset/일요오전-4.png" /></div>
+                <div class="swiper-slide"><img src="/asset/일요오전-5.png" /></div>
+                <div class="swiper-slide"><img src="/asset/일요오전-6.png" /></div>
+                <div class="swiper-slide"><img src="/asset/일요오전-7.png" /></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-scrollbar"></div>
+        </div>
+    </section>
+
+</body>
+
+<script type="module">
+    import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.mjs'
+
+    document.querySelectorAll(".swiper").forEach((swiperEl) => {
+
+        const swiper = new Swiper(swiperEl, {
+            pagination: {
+                el: swiperEl.querySelector(".swiper-pagination"),
+            },
+            scrollbar: {
+                el: swiperEl.querySelector(".swiper-scrollbar"),
+            },
+        });
+
+        // DOM에 인스턴스 저장
+        swiperEl.swiperInstance = swiper;
+
+    });
+
+    document.querySelectorAll(".fullscreen-btn").forEach(btn => {
+
+        btn.addEventListener("click", async (e) => {
+
+            const swiperEl = e.currentTarget.closest(".swiper");
+
+            if (!document.fullscreenElement) {
+                await swiperEl.requestFullscreen();
+            } else {
+                await document.exitFullscreen();
+            }
+
+            swiperEl.swiperInstance.update();
+
+        });
+
+    });
+
+</script>
+
+</html>
