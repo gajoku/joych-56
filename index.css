@@ -14,7 +14,7 @@ section > h1 {
 .swiper {
   position: relative;
   z-index: 10;
-  background-color: aliceblue;
+  background-color: black;
   width: 210px;
   height: 297px;
 }
@@ -30,13 +30,13 @@ button {
   border: none;
   padding: 0;
   border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.5);
   font-size: 40px;
   opacity: 0.6;
 }
 button:hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 .fullscreen-btn {
   position: absolute;
