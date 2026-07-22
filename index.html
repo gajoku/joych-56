@@ -137,10 +137,12 @@
       const fullScreenBtn = section.querySelector('.fullscreen-btn');
 
       fullScreenBtn.addEventListener('click', async () => {
-        if (!document.fullscreenElement) {
-          await swiperEl.requestFullscreen();
+        if (!swiperEl.classList.contains('fullscreen')) {
+          swiperEl.classList.add('fullscreen');
+          // await swiperEl.requestFullscreen();
         } else {
-          await document.exitFullscreen();
+          swiperEl.classList.remove('fullscreen');
+          // await document.exitFullscreen();
         }
 
         swiperEl.swiper.update();

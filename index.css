@@ -18,6 +18,13 @@ section > h1 {
   width: 210px;
   height: 297px;
 }
+.swiper.fullscreen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  z-index: 9999;
+}
 .swiper-slide img {
   width: 100%;
   height: 100%;
