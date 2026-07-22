@@ -13,88 +13,115 @@
   </head>
 
   <body>
-    <section>
-      <h1>7/24(금) 여는예배</h1>
-      <div class="swiper" data-prefix="여는예배-" data-amount="7">
-        <button class="fullscreen-btn">⛶</button>
-        <div class="swiper-wrapper">
-          <!-- 여기에 슬라이드 생성 됨 -->
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-scrollbar"></div>
-      </div>
-    </section>
-
-    <section>
-      <h1>7/24(금) 저녁집회</h1>
-      <div class="swiper" data-prefix="금요일 저녁" data-amount="6">
-        <button class="fullscreen-btn">⛶</button>
-        <div class="swiper-wrapper">
-          <!-- 여기에 슬라이드 생성 됨 -->
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-scrollbar"></div>
-      </div>
-    </section>
-
-    <section>
-      <h1>7/25(토) 저녁집회</h1>
-      <div class="swiper" data-prefix="토요저녁-" data-amount="9">
-        <button class="fullscreen-btn">⛶</button>
-        <div class="swiper-wrapper">
-          <!-- 여기에 슬라이드 생성 됨 -->
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-scrollbar"></div>
-      </div>
-    </section>
-
-    <section>
-      <h1>7/26(일) 닫는예배</h1>
-      <div class="swiper" data-prefix="일요오전-" data-amount="6">
-        <button class="fullscreen-btn">⛶</button>
-        <div class="swiper-wrapper">
-          <!-- 여기에 슬라이드 생성 됨 -->
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-scrollbar"></div>
-      </div>
-    </section>
-
-    <section>
-        <h1>기도회곡</h1>
-        <div class="swiper" data-prefix="기도회-" data-amount="12">
-            <button class="fullscreen-btn">⛶</button>
-            <div class="swiper-wrapper">
-                <!-- 여기에 슬라이드 생성 됨 -->
-            </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-scrollbar"></div>
-        </div>
-    </section>
+    <main id="app"></main>
   </body>
 
   <script type="module">
     import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.mjs';
 
-    document.querySelectorAll('.swiper')?.forEach((swiperEl, idx) => {
-      const amount = Number(swiperEl.dataset.amount);
-      const prefix = swiperEl.dataset.prefix;
+    const conti = [
+      {
+        title: '7/24(금) 여는예배',
+        images: [
+          '여는예배-2.png',
+          '여는예배-5.png',
+          '여는예배-6.png',
+          '여는예배-3.png',
+          '여는예배-4.png',
+          '여는예배-7.png',
+          '여는예배-8.png',
+        ],
+      },
+      {
+        title: '7/24(금) 여는예배',
+        images: [
+          '금요일 저녁2.png',
+          '금요일 저녁3.png',
+          '금요일 저녁4.png',
+          '금요일 저녁5.png',
+          '금요일 저녁6.png',
+          '금요일 저녁7.png',
+        ],
+      },
+      {
+        title: '7/25(토) 저녁집회',
+        images: [
+          '토요저녁-2.png',
+          '토요저녁-3.png',
+          '토요저녁-4.png',
+          '토요저녁-5.png',
+          '토요저녁-6.png',
+          '토요저녁-7.png',
+          '토요저녁-8.png',
+          '토요저녁-9.png',
+          '토요저녁-10.png',
+        ],
+      },
+      {
+        title: '7/26(일) 닫는예배',
+        images: [
+          '일요오전-2.png',
+          '일요오전-3.png',
+          '일요오전-4.png',
+          '일요오전-5.png',
+          '일요오전-6.png',
+          '토요저녁-9.png',
+        ],
+      },
+      {
+        title: '기도회곡',
+        images: [
+          '기도회-2.png',
+          '기도회-3.png',
+          '기도회-4.png',
+          '기도회-5.png',
+          '기도회-6.png',
+          '기도회-7.png',
+          '기도회-8.png',
+          '기도회-9.png',
+          '기도회-10.png',
+          '기도회-11.png',
+          '기도회-12.png',
+          '기도회-13.png',
+        ],
+      },
+    ];
 
-      const wrapper = swiperEl.querySelector('.swiper-wrapper');
+    const app = document.querySelector('#app');
 
-      wrapper.innerHTML = Array.from(
-        { length: amount },
-        (_, i) => `
-            <div class="swiper-slide">
-                <div class="swiper-zoom-container">
-                    <img src="asset/${prefix}${i + 2}.png" alt="">
-                </div>
+    conti.forEach((item) => {
+      const section = document.createElement('section');
+
+      section.innerHTML = `
+        <h1>${item.title}</h1>
+
+        <div class="swiper">
+            <button class="fullscreen-btn">⛶</button>
+
+            <div class="swiper-wrapper">
+                ${item.images
+                  .map(
+                    (image) => `
+                    <div class="swiper-slide">
+                        <div class="swiper-zoom-container">
+                            <img src="asset/${image}" alt="">
+                        </div>
+                    </div>
+                `,
+                  )
+                  .join('')}
             </div>
-        `,
-      ).join('');
 
-      const swiper = new Swiper(swiperEl, {
+            <div class="swiper-pagination"></div>
+            <div class="swiper-scrollbar"></div>
+        </div>
+    `;
+
+      app.appendChild(section);
+
+      // 스와이퍼
+      const swiperEl = section.querySelector('.swiper');
+      new Swiper(swiperEl, {
         zoom: {
           maxRatio: 5,
         },
@@ -106,21 +133,17 @@
         },
       });
 
-      // DOM에 인스턴스 저장
-      swiperEl.swiperInstance = swiper;
-    });
+      // 풀스크린 이벤트
+      const fullScreenBtn = section.querySelector('.fullscreen-btn');
 
-    document.querySelectorAll('.fullscreen-btn').forEach((btn) => {
-      btn.addEventListener('click', async (e) => {
-        const swiperEl = e.currentTarget.closest('.swiper');
-
+      fullScreenBtn.addEventListener('click', async () => {
         if (!document.fullscreenElement) {
           await swiperEl.requestFullscreen();
         } else {
           await document.exitFullscreen();
         }
 
-        swiperEl.swiperInstance.update();
+        swiperEl.swiper.update();
       });
     });
   </script>
